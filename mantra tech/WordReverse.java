@@ -1,31 +1,36 @@
 package com.tech;
 
-public class SortNumbers {
+public class WordReverse {
 
 	public static void main(String[] args) {
 		
-		
-		int[] input = new int[] {-5, 6, -7, 3, -1, 3, 9};
-		
-		int temp=0;
-		
-		for(int i=0; i< input.length; i++) {
-			for(int j=i+1; j< input.length; j++) {
-				if(input[i] > input[j]) {
-					temp=input[i];
-					input[i]=input[j];
-					input[j] = temp;
-				}
-				
-				
-			}
-		}
-		
-		for(int i=0; i<input.length; i++) {
-			System.out.print(input[i]+",");
-		}
-
+		String word = "I am a boy";
+        String finalWord = "";
+        boolean firstSubWord = true;
+        String[] split = word.split(" ");
+        for(int i=split.length-1; i>= 0; i--){
+       
+            if(firstSubWord){
+                String firstWord = split[i];
+                String temp = null;
+                
+                for(int j=0; j< firstWord.length(); j++){
+                    if(j == 0)
+                        temp = String.valueOf(firstWord.charAt(j)).toUpperCase();
+                    else
+                        temp += String.valueOf(firstWord.charAt(j)).toLowerCase();
+                }
+                //Setting firstword check to false
+                firstSubWord = false;
+                firstWord = temp;
+                finalWord +=firstWord + " ";
+            }
+            else{
+            	finalWord += split[i].toLowerCase() + " ";
+            }
+                
+        }
+        System.out.println(finalWord);
 	}
 
 }
-
